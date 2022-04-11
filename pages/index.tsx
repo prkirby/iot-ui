@@ -1,14 +1,46 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Container, Text, Button } from '@nextui-org/react'
-import axios from 'axios'
+import { Container, Text, Grid, Spacer } from '@nextui-org/react'
+import 'rc-slider/assets/index.css'
+import LightsController from '../components/lights-controller'
+import { PropertyIOProps } from '../components/property-io'
+
+const musicProperties: Array<PropertyIOProps> = [
+  {
+    min: 1,
+    max: 8,
+    step: 1,
+    defaultVal: 8,
+    topic: 'lights/sl-music/mode',
+    label: 'Mode',
+  },
+  {
+    min: 0,
+    max: 255,
+    step: 1,
+    defaultVal: 0,
+    topic: 'lights/sl-music/minDim',
+    label: 'Minimum Dim (0-255)',
+  },
+  {
+    min: 0,
+    max: 255,
+    step: 1,
+    defaultVal: 255,
+    topic: 'lights/sl-music/maxDim',
+    label: 'Maximum Dim (0-255)',
+  },
+  {
+    min: 0,
+    max: 60000,
+    step: 250,
+    defaultVal: 2000,
+    topic: 'lights/sl-music/animTime',
+    label: 'Animation Time (0-60000ms)',
+  },
+]
 
 const Home: NextPage = () => {
-  async function handleClick() {
-    const response = await axios.get('/api/test')
-    console.log(response.data)
-    alert('done')
-  }
   return (
     <>
       <Head>
@@ -18,7 +50,15 @@ const Home: NextPage = () => {
       </Head>
       <Container>
         <Text h1>Hello.</Text>
-        <Button onClick={handleClick}>Click me</Button>
+        <Spacer y={2} />
+        <Grid.Container gap={2} justify="center">
+          <Grid lg={4}>
+            <LightsController
+              title="Music Corner Lights"
+              properties={musicProperties}
+            />
+          </Grid>
+        </Grid.Container>
       </Container>
     </>
   )
