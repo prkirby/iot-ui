@@ -32,11 +32,11 @@ const musicProperties: Array<PropertyIOProps> = [
   },
   {
     min: 0,
-    max: 60000,
-    step: 250,
+    max: 30000,
+    step: 50,
     defaultVal: 2000,
     topic: 'lights/sl-music/animTime',
-    label: 'Animation Time (0-60000ms)',
+    label: 'Animation Time (0-30000ms)',
   },
 ]
 
@@ -51,8 +51,8 @@ const Home: NextPage = () => {
       <Container>
         <Text h1>Hello.</Text>
         <Spacer y={2} />
-        <Grid.Container gap={2} justify="center">
-          <Grid lg={4}>
+        <Grid.Container gap={4} justify="center">
+          <Grid xs={12} md={6}>
             <LightsController
               title="Music Corner Lights"
               properties={musicProperties}

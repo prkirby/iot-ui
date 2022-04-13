@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Slider from 'rc-slider'
+import Slider from './slider'
 import { Input, Spacer } from '@nextui-org/react'
-import { publish } from '../lib/client'
+import axios from 'axios'
 
 export type PropertyIOProps = {
   min: number
@@ -21,8 +21,8 @@ const PropertyIO = ({
   label,
 }: PropertyIOProps) => {
   const [val, setVal] = useState(defaultVal)
-  function handleChange(val: number) {
-    publish({
+  async function handleChange(val: number) {
+    await axios.post('/api/publish', {
       topic: topic,
       message: val.toString(),
     })
@@ -40,12 +40,13 @@ const PropertyIO = ({
           handleChange(parseInt(e.target.value))
         }}
       />
+      <Spacer y={2} />
       <Slider
         min={min}
         max={max}
-        defaultValue={defaultVal}
+        defaultVal={defaultVal}
         step={step}
-        onChange={(val) => {
+        onChangeFn={(val) => {
           handleChange(val as number)
         }}
       />
