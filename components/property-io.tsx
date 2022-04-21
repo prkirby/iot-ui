@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Slider from './slider'
 import { Input, Spacer } from '@nextui-org/react'
-import axios from 'axios'
+import publish from '../lib/client'
 
 export type PropertyIOProps = {
   min: number
@@ -22,10 +22,7 @@ const PropertyIO = ({
 }: PropertyIOProps) => {
   const [val, setVal] = useState(defaultVal)
   async function handleChange(val: number) {
-    await axios.post('/api/publish', {
-      topic: topic,
-      message: val.toString(),
-    })
+    await publish(topic, val.toString())
     setVal(val)
   }
   return (
