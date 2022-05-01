@@ -7,10 +7,10 @@ import { PropertyIOProps } from '../components/property-io'
 
 const musicProperties: Array<PropertyIOProps> = [
   {
-    min: 1,
+    min: 0,
     max: 8,
     step: 1,
-    defaultVal: 8,
+    defaultVal: 1,
     topic: 'lights/sl-music/mode',
     label: 'Mode',
   },
