@@ -32,8 +32,8 @@ const musicProperties: Array<PropertyIOProps> = [
   },
   {
     min: 0,
-    max: 30000,
-    step: 50,
+    max: 10000,
+    step: 25,
     defaultVal: 2000,
     topic: 'lights/sl-music/animTime',
     label: 'Animation Time (0-30000ms)',
