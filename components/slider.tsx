@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import { useTheme } from '@nextui-org/react'
+import { throttle } from 'lodash'
 import RCSlider from 'rc-slider'
 
 type SliderProps = {
@@ -10,6 +12,19 @@ type SliderProps = {
 }
 
 const Slider = ({ min, max, defaultVal, step, onChangeFn }: SliderProps) => {
+  // throttle the onChange function, using useRef because the returned
+  // throttled function can't be recreated every render
+  const throttledChange = useRef(
+    throttle(onChangeFn, 50, {
+      leading: true,
+      trailing: false,
+    })
+  )
+
+  const handleChange = (val: number | number[]) => {
+    throttledChange.current(val)
+  }
+
   const { theme } = useTheme()
   const handleStyle = {
     width: 50,
@@ -35,7 +50,7 @@ const Slider = ({ min, max, defaultVal, step, onChangeFn }: SliderProps) => {
       max={max}
       defaultValue={defaultVal}
       step={step}
-      onChange={onChangeFn}
+      onChange={handleChange}
       handleStyle={handleStyle}
       trackStyle={trackStyle}
       railStyle={railStyle}
