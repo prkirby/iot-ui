@@ -5,9 +5,10 @@ import 'rc-slider/assets/index.css'
 import LightsController from '../components/lights-controller'
 import { PropertyIOProps } from '../components/property-io'
 
+const musicStatusTopic: string = 'lights/sl-music/status'
 const musicProperties: Array<PropertyIOProps> = [
   {
-    min: 0,
+    min: 1,
     max: 8,
     step: 1,
     defaultVal: 1,
@@ -55,6 +56,7 @@ const Home: NextPage = () => {
             <LightsController
               title="Music Corner Lights"
               properties={musicProperties}
+              statusTopic={musicStatusTopic}
             />
           </Grid>
         </Grid.Container>
