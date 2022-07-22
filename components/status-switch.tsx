@@ -19,7 +19,6 @@ const StatusSwitch = ({ topic }: StatusSwitchProps) => {
         checked={status}
         size="lg"
         onChange={async (e: SwitchEvent) => {
-          console.log(e.target.checked ? '1' : '0')
           await publish(topic, e.target.checked ? '1' : '0')
           setStatus(e.target.checked)
         }}
