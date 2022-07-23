@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { Switch, Text, SwitchEvent, Spacer } from '@nextui-org/react'
 
-import publish from '../lib/client'
+import { publish } from '../lib/client'
 
 type StatusSwitchProps = {
   topic: string
+  defaultChecked: boolean
 }
 
-const StatusSwitch = ({ topic }: StatusSwitchProps) => {
-  const [status, setStatus] = useState(true)
+const StatusSwitch = ({ topic, defaultChecked }: StatusSwitchProps) => {
+  const [status, setStatus] = useState(defaultChecked)
 
   return (
     <>

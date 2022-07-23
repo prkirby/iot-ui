@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Slider from './slider'
 import { Input, Spacer } from '@nextui-org/react'
-import publish from '../lib/client'
+import { publish } from '../lib/client'
 
 export type PropertyIOProps = {
   min: number
@@ -10,6 +10,7 @@ export type PropertyIOProps = {
   step: number
   topic: string
   label: string
+  id: string
 }
 
 const PropertyIO = ({

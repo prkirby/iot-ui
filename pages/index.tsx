@@ -14,6 +14,7 @@ const musicProperties: Array<PropertyIOProps> = [
     defaultVal: 1,
     topic: 'lights/sl-music/mode',
     label: 'Mode',
+    id: 'mode',
   },
   {
     min: 0,
@@ -22,6 +23,7 @@ const musicProperties: Array<PropertyIOProps> = [
     defaultVal: 0,
     topic: 'lights/sl-music/minDim',
     label: 'Minimum Dim (0-255)',
+    id: 'minDim',
   },
   {
     min: 0,
@@ -30,6 +32,7 @@ const musicProperties: Array<PropertyIOProps> = [
     defaultVal: 255,
     topic: 'lights/sl-music/maxDim',
     label: 'Maximum Dim (0-255)',
+    id: 'maxDim',
   },
   {
     min: 0,
@@ -38,6 +41,7 @@ const musicProperties: Array<PropertyIOProps> = [
     defaultVal: 2000,
     topic: 'lights/sl-music/animTime',
     label: 'Animation Time (0-30000ms)',
+    id: 'animTime',
   },
 ]
 
